@@ -23,6 +23,7 @@ class ArticleController {
 
         val id = articleRepository.addArticle(board.id, loginMember!!.id, title, body)
         println("${id}번 게시물이 등록 되었습니다.")
+
     }
 
     fun list(rq: Rq) {
@@ -57,7 +58,8 @@ class ArticleController {
             println("${id}번 게시물은 존재하지 않습니다." )
             return
         }
-        val writes = memberRepository.getMemberById(article.id)!!
+
+        val writes = memberRepository.getMemberById(article.memberId)!!
         println("번호 : ${article.id}")
         println("제목 : ${article.title}")
         println("내용 : ${article.body}")
@@ -119,7 +121,8 @@ class ArticleController {
         print("새 내용 : ")
         val body = readLineTrim()
 
-        articleRepository.updateArticle(title, body, article)
+        articleRepository.updateArticle(id,title,body)
+
         println("${id}번 게시물이 수정 되었습니다.")
     }
 }
