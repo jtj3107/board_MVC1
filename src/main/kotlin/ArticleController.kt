@@ -5,7 +5,7 @@ class ArticleController {
             return
         }
         println("게시판을 선택해주세요")
-        val boards = boardRepository.boards
+        val boards = boardRepository.getBoards()
         for(board in boards){
             println("번호 : ${board.id} / 이름 : ${board.name} / 코드 : ${board.code}")
         }
@@ -21,7 +21,7 @@ class ArticleController {
         print("내용 : ")
         val body = readLineTrim()
 
-        val id = articleRepository.addArticle(board.id, loginMember!!.id, title, body)
+        val id = articleRepository.writeArticle(board.id, loginMember!!.id, title, body)
         println("${id}번 게시물이 등록 되었습니다.")
 
     }

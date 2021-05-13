@@ -50,8 +50,14 @@ fun writeStrFile(filePath: String, fileContent: String) { // 파일저장
 
 }
 
-fun readIntFromFile(filePath: String): Int { // 숫자 파일을 읽기 위해 사용
-    return readStrFromFile(filePath).toInt()
+fun readIntFromFile(filePath: String, default : Int): Int { // 숫자 파일을 읽기 위해 사용
+    val fileContent = readStrFromFile(filePath)
+
+    if( fileContent == ""){
+        return default
+    }
+
+    return fileContent.toInt()
 }
 
 fun writeIntFile(filePath: String, fileContent: Int) { // 숫자 파일을 저장하기 위해 사용

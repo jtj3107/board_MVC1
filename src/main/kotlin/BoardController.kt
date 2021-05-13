@@ -27,7 +27,7 @@ class BoardController {
     }
 
     fun list(rq: Rq) {
-        val boards = boardRepository.boards
+        val boards = boardRepository.getBoards()
 
         for(board in boards){
             println("번호 : ${board.id} / 게시판 이름 : ${board.name} / 게시판 코드 : ${board.code} / 등록날짜 : ${board.regDate}")
@@ -62,7 +62,7 @@ class BoardController {
             return
         }
 
-        print("새로운 게시판 이름 : ")
+        print("새로운 게시판 코드 : ")
         val code = readLineTrim()
         val boardCode = boardRepository.getBoardByCode(code)
         if(boardCode != null){

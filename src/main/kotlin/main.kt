@@ -7,9 +7,9 @@ fun main(){
     val boardController = BoardController()
     val articleController = ArticleController()
     val memberController = MemberController()
-    boardRepository.makeTestBoard()
-    memberRepository.makeTestMember()
-    // articleRepository.makeTestArticle()
+//    boardRepository.makeTestBoard()
+//     memberRepository.makeTestMember()
+//     articleRepository.makeTestArticle()
     println("== 게시판 프로그램 시작 ==")
     while(true){
         val prompt = if(loginMember == null){

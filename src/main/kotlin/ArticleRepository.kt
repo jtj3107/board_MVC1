@@ -36,7 +36,7 @@ class ArticleRepository {
         return Article(id,regDate, updateDate, title, body, memberId, boardId) // 변환한 값을 Article에 담아 리턴에 해준다
     }
     fun getLastId() : Int{ // 마지막 번호를 리턴해주는 함수
-        val lastId = readIntFromFile("data/article/lastId.txt") // 파일에 저장된 값를 찾아 lastId에 저장해준다
+        val lastId = readIntFromFile("data/article/lastId.txt", 0) // 파일에 저장된 값를 찾아 lastId에 저장해준다
 
         return lastId // 저장된 값 리턴
     }
@@ -44,7 +44,7 @@ class ArticleRepository {
         writeIntFile("data/article/lastId.txt", newLastId) // 해당 위치의 파일을 받은 newLastId로 변경 후 저장
     }
 
-    fun addArticle(boardId: Int, memberId: Int, title: String, body: String): Int {
+    fun writeArticle(boardId: Int, memberId: Int, title: String, body: String): Int {
         val id = getLastId() +1 // 마지막 번호를 받아 +1
         val regDate = Util.getNowDateStr()
         val updateDate = Util.getNowDateStr()
@@ -61,7 +61,7 @@ class ArticleRepository {
     fun makeTestArticle() {
         /*
         for (i in 1..25) {
-            addArticle(i%2 +1,i %9 +1,"제목${i}", "내용${i}")
+            writeArticle(i%2 +1,i %9 +1,"제목${i}", "내용${i}")
         }
          */
     }
