@@ -1,6 +1,7 @@
 class MemberRepository {
     val members = mutableListOf<Member>()
     var lastId = 0
+
     fun addMember(loginId: String, loginPw: String, name: String, nickName: String, cellPhoneNo: String, email: String): Int {
         val id = ++lastId
         val regDate = Util.getNowDateStr()
