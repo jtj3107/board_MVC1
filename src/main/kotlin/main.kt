@@ -1,44 +1,48 @@
 val articleRepository = ArticleRepository()
 val memberRepository = MemberRepository()
 val boardRepository = BoardRepository()
-var loginMember : Member? = null
-fun main(){
+var loginMember: Member? = null
+fun main() {
     val systemController = SystemController()
     val boardController = BoardController()
     val articleController = ArticleController()
     val memberController = MemberController()
+    val ssgController = SsgController()
 //    boardRepository.makeTestBoard()
-//     memberRepository.makeTestMember()
-//     articleRepository.makeTestArticle()
+//    memberRepository.makeTestMember()
+//    articleRepository.makeTestArticle()
     println("== 게시판 프로그램 시작 ==")
-    while(true){
-        val prompt = if(loginMember == null){
+    while (true) {
+        val prompt = if (loginMember == null) {
             print("명령어 : ")
-        }else {
+        } else {
             print("${loginMember!!.nickName}님 :")
         }
         val command = readLineTrim()
 
         val rq = Rq(command)
 
-        when(rq.actionPath){
-            "/system/exit" ->{
+        when (rq.actionPath) {
+            "/ssg/build" ->{
+                ssgController.build(rq)
+            }
+            "/system/exit" -> {
                 systemController.exit(rq)
                 break
             }
-            "/article/write" ->{
+            "/article/write" -> {
                 articleController.write(rq)
             }
-            "/article/list" ->{
+            "/article/list" -> {
                 articleController.list(rq)
             }
-            "/article/detail"-> {
+            "/article/detail" -> {
                 articleController.detail(rq)
             }
-            "/article/delete" ->{
+            "/article/delete" -> {
                 articleController.delete(rq)
             }
-            "/article/modify" ->{
+            "/article/modify" -> {
                 articleController.modify(rq)
             }
             "/member/join" -> {
@@ -47,19 +51,19 @@ fun main(){
             "/member/login" -> {
                 memberController.login(rq)
             }
-            "/member/logout"->{
+            "/member/logout" -> {
                 memberController.logout(rq)
             }
-            "/board/add"->{
+            "/board/add" -> {
                 boardController.add(rq)
             }
-            "/board/list" ->{
+            "/board/list" -> {
                 boardController.list(rq)
             }
-            "/board/modify" ->{
+            "/board/modify" -> {
                 boardController.modify(rq)
             }
-            "/board/delete" ->{
+            "/board/delete" -> {
                 boardController.delete(rq)
             }
         }

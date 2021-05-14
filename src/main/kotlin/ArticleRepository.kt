@@ -59,11 +59,11 @@ class ArticleRepository {
     }
 
     fun makeTestArticle() {
-        /*
+
         for (i in 1..25) {
             writeArticle(i%2 +1,i %9 +1,"제목${i}", "내용${i}")
         }
-         */
+
     }
 
     fun filteredArticles(boardCode: String, searchKeyword: String, page: Int, pageCount: Int): List<Article> {
